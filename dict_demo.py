@@ -82,5 +82,3 @@ if __name__ == "__main__":
     """
     data = {"title":"My home page", "text":"Welcome to my home page!"}
     print(template.format_map(data))
-
-    #字典方法
