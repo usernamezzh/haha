@@ -88,6 +88,21 @@ def f(arg1, **vardict):
     print(arg1)
     print(vardict)
 
+# 匿名函数  python使用lambda来创建匿名函数（不再使用def语句这样标准的形式定义一个函数）
+# lambda只是一个表达式，函数体比def检单的多
+# lambda主题是一个表达式，而不是一段代码块。仅仅能在lambda表达式中封装有限的逻辑进去。
+# lambda函数拥有自己的命令空间，且不能访问自己参数列表之外或全局命名空间里的参数。
+# 虽然lambda函数看起来只能写一行，却不等同于C和C++的内联函数，后者的目的是调用小函数时不占用栈内存从而增加运行效率。
+sum = lambda arg1, arg2: arg1 + arg2
+print("相加后的值：", sum(10,20))
+print("相加后的值：", sum(20,20))
+
+# return语句 return[表达式]语句用于退出函数，选择性地向调用方返回一个表达式。不带参数值的return语句返回None.
+def sum(arg1, arg2):
+    total = arg1 + arg2
+    print("函数内：", total)
+    return total
+
 if __name__ == "__main__":
     hello()
     print(max(5,4))
@@ -113,3 +128,6 @@ if __name__ == "__main__":
     f(1,a = 2, b = 3)
 
     F(1,2,c=3)
+
+    total = sum(20, 20)
+    print("函数外：", total)
