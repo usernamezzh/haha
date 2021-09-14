@@ -61,5 +61,53 @@ for arg in sys.argv[1:]:
         print(arg,'has',len(f.readline()),"lines")
         f.close()
 # 使用else子句比把所有的语句都放在try子句里面要好，这样可以避免一些异想不到，而except又无法捕获的异常。
-# 异常处理并不仅仅处理那些直接发生在try子句中的异常，而且还能处理子句中调用的函数（甚至间接调用的函数）里抛出的异常
+# 异常处理并不仅仅处理那些直接发生在try子句中的异常，而且还能处理子句中调用的函数（甚至间接调用的函数）里抛出的异常.
 
+def this_fails():
+    x = 1/0
+
+try:
+    this_fails()
+except ZeroDivisionError as err:
+    print("handling run-time error:",err)
+
+
+# try-finally语句：try-finally语句无论是否发生异常，都将执行最后的代码。
+#         try
+#                     执行代码
+#         except
+#                     发生异常时执行的代码
+#         else
+#                     没有发生异常时执行的代码
+#         finally
+#                     不管有没有异常都会被执行的代码
+
+def runoob():
+    print("Hello Runoob!")
+try:
+    runoob()
+except AssertionError as error:
+    print(error)
+else:
+    try:
+        with open(r'C:\Users\Administrator\Desktop\test.txt') as file:
+            read_data = file.read()
+            print(read_data)
+    except FileNotFoundError as err:
+        print(err)
+finally:
+    print("无论异常是否发生都会执行。")
+
+# 抛出异常 python使用raise抛出一个指定的异常
+# x = 10
+# if x > 5:
+#     raise Exception('x不能大于5，x的值为：{}'.format(x))
+# raise唯一的一个参数指定了要被抛出的异常。它必须是一个异常的实例或者是一个异常的类（也就是Exception的子类）。
+try:
+    raise NameError('Hithere')
+except NameError:
+    print('An exception flew by')
+    raise
+
+# 用户自定义异常
+# 可以创建一个新的异常类来拥有自己的异常。异常类继承自Exception类，可以直接继承，或者间接继承。
