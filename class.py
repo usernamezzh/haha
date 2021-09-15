@@ -70,3 +70,215 @@ class Test1:
         print(Runoob.__class__)
 t1 = Test1()
 t1.prt()
+
+# 类的方法
+# 在类的内部，使用def关键字来定义一个方法，与一般函数定义不同，类方法必须包含参数self,且为第一个参数，self代表的是类的实例。
+class people:
+    #定义基本属性
+    name = ''
+    age = 0
+    #定义私有属性，私有属性在类外部无法直接访问
+    __weight = 0
+    #定义构造函数
+    def __init__(self,n,a,w):
+        self.name = n
+        self.age = a
+        self.__weight = w
+    def speak(self):
+        print("%s说：我%d岁,%dKG。"%(self.name,self.age,self.__weight))
+
+# 实例化类
+p = people("Runoob",10,30)
+p.speak()
+
+# 继承
+# class DerivedClassName(BaseClassName):
+#     <statement-1>
+#     .
+#     .
+#     .
+#     <statement-n>
+# 子类（派生类DerivedClassName）会继承父类（基类BaseClassName）的属性和方法
+# BaseClassName(实例中的基类名)必须与派生类定义在一个作用域内。除了类还可以用表达式，基类定义在另一个模块中时这一点非常有用。
+# class DerivedClassName(modname.BaseClassName):
+class people1:
+    # 定义基本属性
+    name = ''
+    age = 0
+    # 定义私有属性，私有属性在类外部无法直接访问
+    __weight = 0
+    # 定义构造方法
+    def __init__(self,n,a,w):
+        self.name = n
+        self.age = a
+        self.__weight = w
+    def speak(self):
+        print("%s说：我%d岁。"%(self.name,self.age))
+
+# 单继承示例
+class student(people1):
+    grade = 0
+    def __init__(self,n,a,w,g):
+        # 调用父类的构造函数
+        people.__init__(self,n,a,w)
+        self.grade = g
+    # 覆写父类的方法
+    def speak(self):
+        print("%s说：我%d岁，我读%d年级。"%(self.name,self.age,self.grade))
+
+s = student("Tom", 10, 30, 3)
+s.speak()
+
+# 多继承
+# class DerivedClassName(Base1,Base2,Base3):
+#     <statement-1>
+#     .
+#     .
+#     .
+#     <statement-n>
+# 需要注意圆括号中父类的顺序，若是父类中有相同的方法名，而在子类使用时未指定，python从左至右搜索即方法在子类中未找到时，从左到右查找父类中是否包含方法。
+class people2:
+    # 定义基本属性
+    name = ''
+    age = 0
+    # 定义私有属性，私有属性在类外部无法直接访问
+    __weight = 0
+    # 定义构造函数
+    def __init__(self,n,a,w):
+        self.name = n
+        self.age = a
+        self.__weight = w
+    def speak(self):
+        print("%s说：我%d岁，体重%dkg。"%(self.name,self.age,self.__weight))
+
+# p1 = people2("Tom",10,30)
+# p1.speak()
+# 单继承示例
+class student(people2):
+    grade = 0
+    def __init__(self,n,a,w,g):
+        # 调用父类函数
+        people2.__init__(self,n,a,w)
+        self.grade = g
+    def speak(self):
+        print("%s说：我%d岁，我今年%d年级"%(self.name,self.age,self.grade))
+# s1 = student("Tony", 15, 50, 8)
+# s1.speak()
+# 另一个类，多重继承前的准备
+class speaker:
+    # 定义基本属性
+    name = ''
+    topical = ''
+    # 定义构造函数
+    def __init__(self,n,t):
+        self.name = n
+        self.topical = t
+    def speak(self):
+        print("我的名字叫%s，是一名演说家，今天演说的主题是%s"%(self.name,self.topical))
+s2 = speaker('Tim','python')
+s2.speak()
+
+# 多重继承
+class sample(speaker,student):
+    def __init__(self,n,a,w,g,t):
+        # 调用父类函数
+        speaker.__init__(self,n,t)
+        student.__init__(self,n,a,w,g)
+s3 = sample('Nancy',15,30,7,'python')
+s3.speak()  #方法名相同，默认调用的是在括号排前的父类的方法
+
+# 方法重写
+# 如果你的父类方法的功能不能满足你的需求，你可以在子类重写你父类的方法。
+class Parent: #定义父类
+    def myMethod(self):
+        print('调用父类方法')
+
+class Child(Parent):  #定义子类
+    def myMethod(self):
+        print('调用子类方法')
+
+C = Child()    #子类实例
+C.myMethod()   #子类调用重写方法
+super(Child,C).myMethod() #用子类对象调用父类已被覆盖的方法
+# super() 函数是用于调用父类（超类）的一个方法
+
+
+# 类属性与方法
+# 类的私有属性：_private_attrs:两个下划线开头，声明该属性为私有，不能在类的外部被使用或直接访问，在类内部的方法中使用时self._private_attrs。
+# 类的方法：在类的内部使用关键字来定义一个方法，与一般函数定义不同，类方法必须包含参数self,且为第一个参数，self代表的是类的实例。
+# self的名字并不是规定死的，也可以使用this，但是最好按照约定使用self。
+# 类的私有方法：_private_method：两个下划线开头，声明该方法为私有方法，只能在类的内部调用，不能在类的外部调用。self._private_methods。
+
+class JustCounter:
+    __secretCount = 0   # 私有变量
+    publicCount = 0     # 公有变量
+    def count(self):
+        self.__secretCount += 1
+        self.publicCount += 1
+        print(self.__secretCount)
+
+counter = JustCounter()
+counter.count()
+counter.count()
+print(counter.publicCount)
+# print(counter.__sercret)  # 报错，实例不能访问私有对象
+
+class site:
+    name = ''
+    url = ''
+    def __init__(self,name,url):
+        self.name = name
+        self.url = url
+
+    def who(self):
+        print("name:",self.name)
+        print("url:",self.url)
+
+    def __foo(self):
+        print("这是私有方法")
+
+    def foo(self):
+        print("这是公有方法")
+        self.__foo()
+
+x = site("菜鸟教程", "www.runoob.com")
+x.who()
+x.foo()
+# x.__foo()   #报错，外部不能调用私有方法
+
+# 类的专有方法：
+# __init__: 构造函数，在生成对象时调用
+# __del__: 析构函数，释放对象时调用
+# __repr__: 打印，转换
+# __setitem__: 按照索引赋值
+# __getitem__: 按照索引获取值
+# __len__: 获取长度
+# __cmp__: 比较运算
+# __call__: 函数调用
+# __add__:  加运算
+# __sub__:  减运算
+# __mul__:  乘运算
+# __truediv__:  除运算
+# __mod__:  求余运算
+# __pow__:  乘方
+
+# 运算符重载
+# python同样支持运算符重载，我们可以对类的专有方法进行重载
+
+class vector:
+    def __init__(self,a,b):
+        self.a = a
+        self.b = b
+
+    def __str__(self):
+        return 'vector (%d,%d)' %(self.a, self.b)
+
+    def __add__(self,other):
+        return vector(self.a + other.a, self.b + other.b)
+
+v1 = vector(5,10)
+v2 = vector(5,-2)
+print(v1 + v2)
+
+
+
