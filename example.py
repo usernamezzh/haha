@@ -2,6 +2,7 @@
 
 import cmath
 import math
+import random
 
 def fun1():
     print("Hello world!")
@@ -69,6 +70,82 @@ def fun9(r):
     s = math.pi*(r*r)
     print("圆的面积等于：",s)
 
+def fun10():
+    print(random.randint(0,9))
+# 函数返回数字N，N为a到b之间的数字（a >= N >= b）,包含a和b
+
+def fun11():
+    celsius = float(input("输入摄氏温度："))
+    fahrenheit = celsius * 1.8 + 32
+    print("%0.1f摄氏温度的华氏温度为%0.1f"%(celsius,fahrenheit))
+
+def fun12(x,y):
+    temp = x
+    x = y
+    y = temp
+    print("交换后x的值为：{}".format(x))
+    print("交换后y的值为：{}".format(y))
+
+def fun13():
+    x = input("请输入x的值为：")
+    y = input("请输入y的值为：")
+    x,y = y,x
+    print("交换后x的值为：{}".format(x))
+    print("交换后y的值为：{}".format(y))
+
+def fun14(num):
+    if num > 0:
+        print("{}是正数".format(num))
+    elif num == 0:
+        print("{}是零".format(num))
+    else:
+        print("{}是负数".format(num))
+
+def fun15():
+    num = float(input("请输入一个数字："))
+    if num >= 0:
+        if num > 0:
+            print("{}是正数".format(num))
+        else:
+            print("{}是零".format(num))
+    else:
+        print("{}是负数".format(num))
+
+def fun16():
+    while True:
+        try:
+            num = float(input("请输入一个数字："))
+            if num > 0:
+                print("{}是正数".format(num))
+            elif num == 0:
+                print("{}是零".format(num))
+            else:
+                print("{}是负数".format(num))
+            break
+        except ValueError:
+            print("输入无效，需要输入一个数字")
+            continue
+
+def fun17(s):
+    try:
+        float(s)
+        return True
+    except ValueError:
+        pass
+
+    try:
+        import unicodedata
+        unicodedata.numeric(s)
+        return True
+    except (TypeError,ValueError):
+        pass
+
+    return False
+
+# print(fun17('foo'))
+# print(fun17('5'))
+# print(fun17('1.5'))
+
 if __name__ == "__main__":
     fun1()
     fun2(10,20)
@@ -79,3 +156,13 @@ if __name__ == "__main__":
     fun7()
     fun8()
     fun9(2)
+    fun10()
+    fun11()
+    fun12(1,2)
+    fun13()
+    fun14(5)
+    fun15()
+    fun16()
+    print(fun17('foo'))
+    print(fun17('5'))
+    print(fun17('1.5'))
