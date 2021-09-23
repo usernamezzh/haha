@@ -142,27 +142,76 @@ def fun17(s):
 
     return False
 
-# print(fun17('foo'))
-# print(fun17('5'))
-# print(fun17('1.5'))
+def fun18(num):
+    if num % 2 == 0:
+        print("该数是偶数")
+    else:
+        print("该数是奇数")
+
+def fun19(year):
+    if year % 4 == 0:
+        if year % 100 == 0:
+            if year % 400 == 0:
+                print("该年是闰年")
+            else:
+                print("该年是平年")
+        else:
+            print("该年是闰年")
+    else:
+        print("该年是平年")
+
+def fun20():
+    year = int(input("请输入年份："))
+    if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:
+        print("{}年是闰年".format(year))
+    else:
+        print("{}年是平年".format(year))
+    return
+
+def fun21():
+    print(max(1,2))
+    print(max('a','b'))
+    print(max([1,2]))
+    print(max((1,2)))
+    print("10, 20, -10中最大值为：",max(10,20,-10))
+    print("-50, 100, 200中最大值为：",max(-50,100,200))
+    print("200, -200, 100中最大值为：",max(200,-200,100))
+
+def fun22():
+    num = int(input("请输入一个数字："))
+    if num > 1:
+        for i in range(2,num):
+            if num % i == 0:
+                print("{}不是质数".format(num))
+                print("{}乘于{}是{}".format(i,num // i,num))
+                break
+        else:
+            print("{}是质数".format(num))
+    else:
+        print("{}不是质数".format(num))
 
 if __name__ == "__main__":
-    fun1()
-    fun2(10,20)
-    fun3()
-    fun4()
-    fun5()
-    fun6()
-    fun7()
-    fun8()
-    fun9(2)
-    fun10()
-    fun11()
-    fun12(1,2)
-    fun13()
-    fun14(5)
-    fun15()
-    fun16()
-    print(fun17('foo'))
-    print(fun17('5'))
-    print(fun17('1.5'))
+    # fun1()
+    # fun2(10,20)
+    # fun3()
+    # fun4()
+    # fun5()
+    # fun6()
+    # fun7()
+    # fun8()
+    # fun9(2)
+    # fun10()
+    # fun11()
+    # fun12(1,2)
+    # fun13()
+    # fun14(5)
+    # fun15()
+    # fun16()
+    # print(fun17('foo'))
+    # print(fun17('5'))
+    # print(fun17('1.5'))
+    # fun18(10)
+    # fun19(1900)
+    # fun20()
+    # fun21()
+    fun22()
