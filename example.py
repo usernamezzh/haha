@@ -190,8 +190,109 @@ def fun22():
     else:
         print("{}不是质数".format(num))
 
-if __name__ == "__main__":
-    # fun1()
+def fun23():
+    while 1:
+        try:
+            num = int(input("请输入一个数："))
+            if num == 2:
+                print("质数")
+            else:
+                if num == 0 or num == 1:
+                    print("都不是")
+                else:
+                    u = num - 2
+                    h = 1
+                    p = 1
+                    while u:
+                        h = h + 1
+                        if num % h == 0:
+                            p = 1
+                            break
+                        else:
+                            p = 0
+                        u = u - 1
+                    if p:
+                        print("合数")
+                        break
+                    else:
+                        print("质数")
+                        break
+        except ValueError:
+            print("输入的内容不对，请重新输入。")
+
+def fun24():
+    upper = int(input("请输入区间最大值："))
+    lower = int(input("请输入区间最小值："))
+    for num in range(lower,upper+1):
+        if num > 1:
+            for i in range(2,num):
+                if num % i == 0:
+                    break
+            else:
+                print(num)
+
+def fun25(num):
+    print(math.factorial(num))
+
+def fun26():
+    num = 1
+    x = int(input("请输入x的值："))
+    for i in range(1,x + 1):
+        num *= i
+    print("{}的阶乘等于{}".format(x,num))
+
+# def fun27():
+# #     num = int(input("请输入一个数字："))
+# #     if num < 0:
+# #         print("该数没有阶乘。")
+# #     elif num == 0:
+# #         print("0的阶乘等于1。")
+# #     else:
+# #         return num * fun27(num -
+
+def fun28():
+    for i in range(1,10):
+        for j in range(1,i+1):
+            print("%d * %d = %d\t"%(j,i,i*j), end = '')
+        print()
+
+def fun29():
+    i = 1
+    while i < 10:
+        j = 1
+        while j <= i:
+            print("{} * {} = {}\t".format(j, i, i*j),end = '')
+            j += 1
+        print('')
+        i += 1
+
+def fun30():
+    for i in range(1,10):
+        j = 1
+        while j <= i:
+            print("{} * {} = {}\t".format(j, i, j*i),end = '')
+            j += 1
+        print()
+
+def fun31():
+    i = 1
+    while i < 10:
+        for j in range(1,i+1):
+            print("%d * %d = %2d\t"%(j, i, j*i),end = '')
+        print()
+        i += 1
+
+def fun32():
+    a = [1,2,3,4,5,6,7,8,9]
+    for i in a:
+        j = 1
+        while j <= i:
+            print("{} * {} = {}\t".format(j, i, i*j),end = '')
+            j += 1
+        print()
+
+
+if __name__ == "__main__":    # fun1()
     # fun2(10,20)
     # fun3()
     # fun4()
@@ -214,4 +315,14 @@ if __name__ == "__main__":
     # fun19(1900)
     # fun20()
     # fun21()
-    fun22()
+    # fun22()
+    # fun23()
+    # fun24()
+    # fun25(3)
+    # fun26()
+    # fun27()
+    fun28()
+    fun29()
+    fun30()
+    fun31()
+    fun32()
