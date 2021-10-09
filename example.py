@@ -263,7 +263,7 @@ def fun29():
         while j <= i:
             print("{} * {} = {}\t".format(j, i, i*j),end = '')
             j += 1
-        print('')
+        print()
         i += 1
 
 def fun30():
@@ -290,6 +290,36 @@ def fun32():
             print("{} * {} = {}\t".format(j, i, i*j),end = '')
             j += 1
         print()
+
+def fun33():
+    for i in range(1,10):
+        for j in range(1,10-i):
+            print(end='           ')
+        for k in  range(1,i+1):
+            print("%d * %d = %2d"%(k,i,k*i),end=' ')
+        print("")
+
+def fun34():
+    nterms = int(input("您需要几项？"))
+    n1 = 0
+    n2 = 1
+    count = 2
+
+    if nterms <= 0:
+        print("请输入一个正整数。")
+    elif nterms == 1:
+        print("斐波那契数列：")
+        print(n1)
+    else:
+        print("斐波那契数列：")
+        print(n1,',',n2,end = ',')
+        while count < nterms:
+            nth = n1 + n2
+            print(nth, end = ',')
+            n1 = n2
+            n2 = nth
+            count += 1
+
 
 
 if __name__ == "__main__":    # fun1()
@@ -326,3 +356,5 @@ if __name__ == "__main__":    # fun1()
     fun30()
     fun31()
     fun32()
+    fun33()
+    fun34()
